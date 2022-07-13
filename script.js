@@ -138,11 +138,16 @@ async function getJokes() {
     } else {
       joke = data.joke;
     }
+    // TEXT-TO-SPEECH
     tellMe(joke);
+    // DISABLE BUTTON
+    toggleButton();
   } catch (error) {
     // CATCH ERRORS HERE
     console.log("whoops", error);
   }
 }
 
-getJokes();
+// EVENT LISTENERS
+button.addEventListener("click", getJokes);
+audioElement.addEventListener("ended", toggleButton);
